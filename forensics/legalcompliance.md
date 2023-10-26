@@ -92,6 +92,7 @@
 ### Singapore
 * [Computer Misuse Act](https://sso.agc.gov.sg/Act/CMA1993)
 ### Belgium
+* [Article 550(b) of the Criminal Code - Computer Hacking](https://ccb.belgium.be/en/vulnerability-reporting-ccb)
 * [Klokkenluiderswet](https://www.law.kuleuven.be/citip/blog/belgium-legalises-ethical-hacking-a-threat-or-an-opportunity-for-cybersecurity/)
 ### Brazil
 * [Unauthorized modification or alteration of the information system](https://resourcehub.bakermckenzie.com/en/resources/data-privacy-security/latin-america/brazil/topics/key-data-privacy-and-security-laws)
