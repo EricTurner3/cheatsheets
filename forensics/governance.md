@@ -1,12 +1,16 @@
 # Rules, Procedures, Standards & Methodologies
 
 1. [Rules of Evidence](#rules-of-evidence)
+1. [Federal Rules of Evidence](#federal-rules-of-evidence)
+1. [Scientific Working Group on Digital Evidence](#scientific-working-group-on-digital-evidence-swgde)
+1. [ACPO - Principles of Digital Evidence](#association-of-chief-police-officers-acpo---principles-of-digital-evidence)
 1. [Forensics Readiness Planning](#forensics-readiness-planning)
 1. [Ensuring Quality Assurance](#ensuring-quality-assurance)
 1. [First Response by Laboratory Forensics Staff](#first-response-by-laboratory-forensics-staff)
 1. [Computer Forensics Methodology](#computer-forensics-methodology)
 1. [Order of Volatility](#order-of-volatility)
 1. [Data Acquisition Methodology](#data-acquistion-methodology)
+1. [Standards for Sanitizing Media](#standards-for-sanitizing-media)
 1. [Windows Forensics Methodology](#windows-forensics-methodology)
 1. [Guidelines to Ensure Log File Credibility and Usability](#guidelines-to-ensure-log-file-credibility-and-usability)
 1. [Forensic Acquisition of Amazon EC2 Instance: Methodology](#forensic-acquisition-of-amazon-ec2-instance-methodology)
@@ -17,6 +21,8 @@
 1. [Dynamic Malware Analysis: Pre-Execution Preparation](#dynamic-malware-analysis-pre-execution-preparation)
 1. [Mobile Forensics Process](#mobile-forensics-process)
 
+
+
 ## Rules of Evidence
 Digital evidence must follow the following to make it admissible in a court of law
 1. Understandable - clear and understandable to judges
@@ -24,6 +30,33 @@ Digital evidence must follow the following to make it admissible in a court of l
 3. Authentic - must be real and related to the incident
 4. Reliable - must be no doubt about the authenticity or veracity of the evidence
 5. Complete - must prove the attacker's actions or innocent
+
+## Federal Rules of Evidence
+The full list can be found [here](https://www.law.cornell.edu/rules/fre).
+* Rule 102: Purpose
+* Rule 103: Rulings on Evidence
+* Rule 104: Preliminary Questions
+* Rule 105: Limited Admissibility
+* Rule 801: Hearsay Rule / Statements That Are Not Hearsay
+* Rule 803: Hearsay Exceptions - Availability of Declarant Immaterial
+* Rule 804: Hearsay Exceptions; Declarant Unavailable
+
+## Scientific Working Group on Digital Evidence (SWGDE)
+* Principle 1 - Ensuring accuracy and reliability of evidence during collection, preservation, examination and transference
+* Standards and Criteria 
+    * 1.1 - All agencies that seize and/or examine digital evidence must maintain an appropriate Standard Operating Procedure (SOP) document
+    * 1.2 - Agency management must review the SOPs on an annual basis
+    * 1.3 - Procedures must be gathered and recorded in a scientific manner or gennerally accepted in the field
+    * 1.4 - Agency must maintain written copies of appropriate procedures
+    * 1.5 - Agency must use appropriate & effective hardware and software for seizure or examination
+    * 1.6 - All activity must be recorded in writing and available for review and testimony
+    * 1.7 - Any action that has the potential to alter, damage or destroy any aspect of the original evidence must be performed by qualified persons in a forensically sound manner.
+
+## Association of Chief Police Officers (ACPO) - Principles of Digital Evidence
+1. Principle 1: No action taken by law enforcement agencies or their agents should change data held on a computer or storage media which may subsequently be relied upon in court
+1. Principle 2: In exceptional circumstances, where a person finds it necessary to access original data held on a computer or on storage media, that person must be competent to do so and be able to explain his/her actions and the impact of those actions on the evidence, in court.
+1. Principle 3: An audit trail or other record of all processes applied to computer based electronic evidence should be created and preserved. An independent third party should be able to examine those processes and achieve the same result.
+1. Principle 4: The person in charge of the investigation (case officer) has overall responsibility for ensuring that the law and these principles are adhered to.
 
 ## Forensics Readiness Planning
 1. Identify potential evidence required
@@ -85,6 +118,23 @@ Digital evidence must follow the following to make it admissible in a court of l
 1. Acquire non-volatile data
 1. Plan for Contigency
 1. Validate Data Acquisition
+
+## Standards for Sanitizing Media
+1. Russian: GOST P50739-95
+    * 2 passes. Write 0; Write Random Char. No verification
+1. German: VSITR
+    * 7 passes. Write 0; Write 1; Write 0; Write 1; Write 0; Write 1; Write Random Char
+1. American: NAVSO P-5239-26 (MFM)
+    * Simpilier variation used for Modified Frequency Modulation drives such as ST506
+    * 3 passes. Write 1; Write a "1" in low order bit; a "0" in the next most significant bit; and "1"s in the remaining bits comprising the data block; Writes a random char then verifies
+1. American: DoD 5220.22-M
+    * 3 passes. Write 0, then verify; Write 1, then verify; Write Random Char, then verify
+1. American: NAVSO P-5239-26 (RLL)
+    * More complex variation used for Run Length Limited Devices such as SCSI, ATA or IDE drives
+    * 3 passes. Write 1; Write "0010011111..1111" (least significant bit ... most significant bit) for 32 bits and repeat this pattern throughout the data block. Repeat the appropriate pattern for all addressable data blocks.; Writes a random char then verifies
+1. NIST SP 800-88
+    * Clear, Purge, or Destroy
+
 
 ## Windows Forensics Methodology
 1. Collecting Volatile Information
